@@ -1,0 +1,67 @@
+Assignment - 08 - Let's get classy
+
+Coding
+
+1. How do create  Nested Routes react-router-configuration?
+const router = createBrowserRouter([
+    {
+        path: "/",
+        eleement: <App/>,
+        children: [
+            {
+                path: "/",
+                element: <Layout />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },          
+        ]
+    },
+])
+
+2. Read about createHashRouter, createMemoryRouter from react router docs?
+createHashRouter
+=> This router is useful if you are unable to configure your web server to direct all traffic to your React Router application. Instead of using normal URLs, it will use the hash (#) portion of the URL to manage the "application URL".
+createMemoryRouter
+=> Instead of using the browser's history, a memory router manages its own history stack in memory. It's primarily useful for testing and component development tools like Storybook, but can also be used for running React Router in any non-browser environment.
+
+
+3. What is order of life cycle methods calls in class component?
+ When the component gets loaded,
+    => Constructor will get executed
+    => Then, render method will get executed
+    => Then, componentDidMount will ge called
+    => Then, componentDidUpdate will be called 
+    => Then, componentWillUnMount will be called 
+
+4. Why do we use componentDidMount()?
+The componentDidMount is called after the component is rendered and here we can perform apicalls, setInterval, setTimeout. Here, it is used to quickly render the component, then execute the api call and fill the data and re-render the component.
+
+5. Why do we use componentWillUnMount()? Give with example.
+componentWillUnmount() is useful for the cleanup of the application when we switch routes from one place to another. Since we are working with a SPA(Single Page Application) the component process always runs in the background even if we switch to another route. So it is required to stop those processes before leaving the page. I
+f we revisit the same page, a new process starts that affects the browser performance.
+(Eg)
+In an component, during componentDidMount() a timer is set with an interval of every one second to print in console. When the component is unmounted (users moves to a different page), the timer will be running in the background, which we might not even realize and causing huge performance issue. To avoid such situations the cleanup function can be done in componentWillUnmount, in this example clearInterval(timer) to clear the timer interval before unmounting Repo component.
+
+
+6. (Research) why do we use super(props) in react?
+The super(props) is used to inherit the properties and variables from the parent class. It is used inside the Constructor of a class.
+
+7. (Research) Why cant we have cb function of useEffect async?
+You cannot directly make the callback function supplied to the useEffect hook async because 
+async function implicilty returns promise and useEffect expects its callback to either return nothing or a clean-up function.
+
+Coding
+
+1. Create Class Based Component.
+2. Create 2 class-based child components.
+3. Pass props from Parent to child.
+4. Create a constructor.
+5. Create a state variable inside child.
+6. Use this.setState to update it.
+7. What if there are multiple state variables?
+8. Write a console.log for each lifecycle method.
+9. Play with the console logs to find out the correct order of their execution.
+10. Create interval inside componentDidMount?
+11. Use clearInterval to fix the issue caused by the interval
